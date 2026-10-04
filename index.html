@@ -8,6 +8,9 @@
 <meta name="apple-mobile-web-app-title" content="Contador Actas">
 <meta name="theme-color" content="#4f46e5">
 <title>Contador Actas</title>
+<link rel="manifest" href="manifest.json">
+<link rel="icon" type="image/png" href="icon-192.png">
+<link rel="apple-touch-icon" href="icon-192.png">
 <style>
 :root{
   box-sizing:border-box;
@@ -235,6 +238,13 @@ nav button.on{background:linear-gradient(135deg,var(--a1),var(--a2));color:#fff;
 
   renderCounter();
 })();
+
+// Service worker: permite usar la app sin conexión.
+if('serviceWorker' in navigator){
+  window.addEventListener('load',function(){
+    navigator.serviceWorker.register('sw.js').catch(function(){});
+  });
+}
 </script>
 </body>
 </html>
